@@ -1,5 +1,8 @@
 import React from "react";
 import { useTheme } from "../../../contexts/theme/themeContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBell } from "@fortawesome/free-solid-svg-icons";
+// import CircleAvatar from "./CircleAvatar"; // Import your CircleAvatar component
 import "../headerhompage/appbar.css"; // Import component-specific styles
 
 const AppBar = ({ title }) => {
@@ -8,8 +11,10 @@ const AppBar = ({ title }) => {
 
   return (
     <div className={`app-bar ${themeClass}`}>
-      <div className="Container">Welcome</div>
-      {/* Add additional app bar content or buttons here */}
+      <div className="notification-icon">
+        {/* Notification bell icon */}
+        <FontAwesomeIcon icon={faBell} />
+      </div>
     </div>
   );
 };
