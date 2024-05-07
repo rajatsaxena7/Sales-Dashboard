@@ -2,6 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
+import { getFirestore, collection, getDocs } from "firebase/firestore"; // Import Firestore
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,9 +19,24 @@ const firebaseConfig = {
   measurementId: "G-RMMBB4PK8Z",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
+const firestore = getFirestore(app); // Initialize Firestore
 
-export { app, auth };
+// Function to load a Firestore collection
+const loadCollection = async (collectionName) => {
+  try {
+    const querySnapshot = await getDocs(collection(firestore, collectionName));
+    const data = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    return data;
+  } catch (error) {
+    console.error("Error loading collection:", error);
+    return []; // Return empty array on error
+  }
+};
+
+export { app, auth, firestore, loadCollection };
