@@ -1,0 +1,11 @@
+/* Default light theme */
+.home {
+  background-color: #ffffff; /* White background */
+  color: #333333; /* Default text color */
+}
+
+/* Dark theme */
+.dark .home {
+  background-color: #ffffff; /* Dark background */
+  color: #ffffff; /* Light text color */
+}

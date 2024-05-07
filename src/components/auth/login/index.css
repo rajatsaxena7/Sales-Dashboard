@@ -1,0 +1,88 @@
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  color: #000000;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(
+    to bottom right,
+    #007bff,
+    #ffffff
+  ); /* Blue to White gradient */
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px; /* Increase padding for better spacing */
+  margin-bottom: 15px;
+  border: 1px solid #ddd; /* Use a lighter border color */
+  border-radius: 6px;
+  background-color: #f9f9f9; /* Light gray background */
+  box-sizing: border-box; /* Include padding in width calculation */
+  font-size: 16px; /* Increase font size for better readability */
+  transition: border-color 0.3s ease; /* Add transition for border color change */
+}
+
+.input-field:hover,
+.input-field:focus {
+  border-color: #aaa; /* Darker border color on hover/focus */
+}
+
+.input-field input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: inherit;
+  color: #000000 !important; /* Text color with !important */
+}
+
+.error-message {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.button-primary,
+.button-secondary {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-primary {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.button-secondary {
+  background-color: #ffffff;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+.button-primary:hover,
+.button-secondary:hover {
+  opacity: 0.9;
+}
+
+.image {
+  display: block;
+  margin: 0 auto;
+}
