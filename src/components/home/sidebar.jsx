@@ -1,4 +1,6 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/authContexts";
 import {
   SDivider,
   SLink,
@@ -11,12 +13,7 @@ import {
   SSearchIcon,
   SSidebar,
   SSidebarButton,
-  STheme,
-  SThemeLabel,
-  SThemeToggler,
-  SToggleThumb,
 } from "../home/styles";
-
 import {
   AiOutlineApartment,
   AiOutlineHome,
@@ -27,20 +24,28 @@ import {
 import { MdLogout, MdOutlineAnalytics } from "react-icons/md";
 import { BsPeople } from "react-icons/bs";
 
-import { useLocation } from "react-router-dom";
-
 const Sidebar = () => {
   const searchRef = useRef(null);
-
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { pathname } = useLocation();
+  const { logout } = useAuth();
+  // Use useHistory to navigate programmatically
 
   const searchClickHandler = () => {
     if (!sidebarOpen) {
       setSidebarOpen(true);
       searchRef.current.focus();
     } else {
-      // search functionality
+      // Perform search functionality
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout(); // Call the logout method from auth context
+      useNavigate("/login"); // Redirect to the login page after logout
+    } catch (error) {
+      console.error("Failed to logout:", error.message);
     }
   };
 
@@ -49,7 +54,7 @@ const Sidebar = () => {
       <>
         <SSidebarButton
           isOpen={sidebarOpen}
-          onClick={() => setSidebarOpen((p) => !p)}
+          onClick={() => setSidebarOpen((prevState) => !prevState)}
         >
           <AiOutlineLeft />
         </SSidebarButton>
@@ -81,7 +86,6 @@ const Sidebar = () => {
             {sidebarOpen && (
               <>
                 <SLinkLabel>{label}</SLinkLabel>
-                {/* if notifications are at 0 or null, do not display */}
                 {!!notification && (
                   <SLinkNotification>{notification}</SLinkNotification>
                 )}
@@ -93,7 +97,11 @@ const Sidebar = () => {
       <SDivider />
       {secondaryLinksArray.map(({ icon, label }) => (
         <SLinkContainer key={label}>
-          <SLink to="/" style={!sidebarOpen ? { width: `fit-content` } : {}}>
+          <SLink
+            to="/"
+            style={!sidebarOpen ? { width: `fit-content` } : {}}
+            onClick={label === "Logout" ? handleLogout : undefined}
+          >
             <SLinkIcon>{icon}</SLinkIcon>
             {sidebarOpen && <SLinkLabel>{label}</SLinkLabel>}
           </SLink>

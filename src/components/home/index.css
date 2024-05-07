@@ -1,11 +1,27 @@
-/* Default light theme */
-.home {
-  background-color: #ffffff; /* White background */
+body {
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  background-color: #ffffff; /* White background for the entire page */
   color: #333333; /* Default text color */
 }
 
+.home {
+  padding: 20px;
+}
+
 /* Dark theme */
-.dark .home {
-  background-color: #ffffff; /* Dark background */
-  color: #ffffff; /* Light text color */
+.dark {
+  color: #ffffff; /* Light text color for dark theme */
+}
+
+/* Override other specific styles as needed */
+@media (max-width: 768px) {
+  .home {
+    padding: 10px;
+  }
+
+  .content {
+    margin-top: 10px;
+  }
 }

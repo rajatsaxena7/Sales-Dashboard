@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
 import { btnReset, v } from "../../styles/variables.jsx";
 
 export const SSidebar = styled.div`
   width: ${({ isOpen }) => (!isOpen ? `auto` : v.sidebarWidth)};
-  background: #2b2d6b;
+  background: #5a75f8;
   height: 100vh;
   padding: ${v.lgSpacing};
-
   position: relative;
 `;
 
@@ -27,25 +25,23 @@ export const SSidebarButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
   transform: ${({ isOpen }) => (!isOpen ? `rotate(180deg)` : `initial`)};
 `;
 
 export const SLogo = styled.div`
   width: 52px;
-
   img {
     max-width: 100%;
     height: auto;
   }
   cursor: pointer;
-
   margin-bottom: ${v.lgSpacing};
 `;
 
 export const SSearch = styled.div`
   background: ${({ theme }) => theme.bgAlpha};
   border: 1px solid ${({ theme }) => theme.bg3};
+  color: white; /* Text color set to white */
   border-radius: ${v.borderRadius};
   input {
     padding: 0 ${v.smSpacing};
@@ -55,7 +51,7 @@ export const SSearch = styled.div`
     width: 100%;
     outline: none;
     border: none;
-    color: inherit;
+    color: white; /* Text color set to white */
     background: transparent;
   }
   display: flex;
@@ -66,9 +62,9 @@ export const SSearchIcon = styled.button`
   padding: calc(${v.mdSpacing} - 2px) ${v.mdSpacing};
   display: flex;
   cursor: pointer;
-
   svg {
     font-size: 20px;
+    color: white; /* Icon color set to white */
   }
 `;
 
@@ -84,7 +80,6 @@ export const SLinkContainer = styled.div`
     !isActive ? `transparent` : theme.bg3};
   border-radius: ${v.borderRadius};
   margin: 8px 0;
-
   :hover {
     box-shadow: inset 0 0 0 1px ${({ theme }) => theme.bg3};
   }
@@ -94,7 +89,7 @@ export const SLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: inherit;
+  color: white; /* Text color set to white */
   font-size: 16px;
   padding: calc(${v.smSpacing} - 2px) 0;
 `;
@@ -102,9 +97,9 @@ export const SLink = styled(Link)`
 export const SLinkIcon = styled.div`
   padding: ${v.smSpacing} ${v.mdSpacing};
   display: flex;
-
   svg {
     font-size: 20px;
+    color: white; /* Icon color set to white */
   }
 `;
 
@@ -120,7 +115,6 @@ export const SLinkNotification = styled.div`
   border-radius: calc(${v.borderRadius} / 2);
   background: ${({ theme }) => theme.primary};
   color: white;
-
   margin-right: ${v.mdSpacing};
 `;
 
@@ -129,10 +123,13 @@ export const STheme = styled.div`
   align-items: center;
   font-size: 16px;
 `;
+
 export const SThemeLabel = styled.span`
   display: block;
   flex: 1;
+  color: white; /* Text color set to white */
 `;
+
 export const SThemeToggler = styled.button`
   ${btnReset};
   margin: 0 auto;
@@ -142,7 +139,6 @@ export const SThemeToggler = styled.button`
   border-radius: 10px;
   background: ${({ theme, isActive }) =>
     !isActive ? theme.bg3 : theme.primary};
-
   position: relative;
 `;
 

@@ -6,7 +6,7 @@ import { doSignOut } from "../../firebase/auth";
 const Header1 = () => {
   const navigate = useNavigate();
   const { userLoggedIn } = useAuth();
-  return <div>sidebar</div>;
+  return <div className="home">sidebar</div>;
 };
 
 export default Header1;

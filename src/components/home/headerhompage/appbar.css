@@ -1,0 +1,49 @@
+.app-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80vw;
+  height: 10%;
+  height: 64px; /* Set the desired height for your app bar */
+  background-color: #f5f3f3; /* Example background color */
+  color: #000000; /* Example text color */
+  padding: 0 16px; /* Horizontal padding */
+}
+
+.app-bar.dark {
+  background-color: #333333; /* Dark theme background color */
+  color: #ffffff; /* Dark theme text color */
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.container {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  color: #000000;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+  width: 100%;
+  background: linear-gradient(
+    to bottom right,
+    #007bff,
+    #ffffff
+  ); /* Blue to White gradient */
+}
+
+@media (max-width: 768px) {
+  .app-bar {
+    width: 25vh;
+  }
+
+  .content {
+    margin-top: 10px;
+  }
+}
