@@ -22,21 +22,38 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
-const firestore = getFirestore(app); // Initialize Firestore
-
-// Function to load a Firestore collection
+const db = getFirestore(app);
 const loadCollection = async (collectionName) => {
   try {
-    const querySnapshot = await getDocs(collection(firestore, collectionName));
-    const data = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+    const collRef = collection(db, collectionName);
+    const querySnapshot = await getDocs(collRef);
+    const data = querySnapshot.docs.map((doc) => {
+      const docData = doc.data();
+      const attendance = docData.attendace
+        ? docData.attendace.map((att) => ({
+            onField: att.Onfield,
+            clockIn: att.clock_in
+              ? att.clock_in.toDate().toLocaleString()
+              : null,
+            clockOut: att.clock_out
+              ? att.clock_out.toDate().toLocaleString()
+              : null,
+          }))
+        : [];
+      return {
+        id: doc.id,
+        name: docData.display_name,
+        clients: docData.no_of_clients,
+        proposals: docData.proposalsends,
+        attendance,
+        ...docData,
+      };
+    });
     return data;
   } catch (error) {
     console.error("Error loading collection:", error);
-    return []; // Return empty array on error
+    return [];
   }
 };
 
-export { app, auth, firestore, loadCollection };
+export { app, auth, db, loadCollection, collection };

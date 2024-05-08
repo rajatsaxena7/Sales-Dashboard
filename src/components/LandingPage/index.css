@@ -1,5 +1,77 @@
 /* Default light theme */
 .home {
-  background-color: #ffffff; /* White background */
-  color: #333333; /* Default text color */
+  background-color: #edfaff8f; /* White background */
+  color: #646464;
+  font-weight: 800;
+  padding-bottom: 20px;
+  /* Default text color */
+}
+
+/* In your CSS file (e.g., header1.css) */
+.table-container {
+  max-height: 80vh;
+  overflow-y: auto; /* Enables vertical scrolling */
+  width: 100%;
+  padding-top: 50%;
+  margin: 10;
+  border-radius: 20;
+  box-shadow: 20cap; /* Ensure the container takes full available width */
+}
+
+.table-container .MuiTable-root {
+  /* Targeting the Material-UI table */
+  table-layout: fixed; /* This helps manage width of each column */
+  width: 100%;
+  padding-top: 20px;
+  margin: 10;
+  /* Ensures the table does not exceed container width */
+}
+
+.MuiTableCell-root {
+  /* Targeting all table cells */
+  overflow: hidden; /* Prevents content from overflowing */
+  text-overflow: ellipsis; /* Adds an ellipsis to content that overflows */
+  white-space: nowrap; /* Ensures text stays on a single line */
+}
+
+.tableContainer {
+  padding-top: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header button {
+  margin-left: 10px;
+}
+
+.header {
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 60px;
+  border-radius: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: rgb(255, 255, 255);
+}
+
+.header .MuiTypography-root {
+  /* Customize font styles */
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-style: normal;
+}
+
+.tableCell {
+  font-size: 14px;
+  color: blue;
+  font-weight: bold;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.buttonedit {
+  border-radius: 20px;
 }

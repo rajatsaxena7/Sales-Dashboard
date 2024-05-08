@@ -120,7 +120,7 @@ const linksArray = [
     notification: 0,
   },
   {
-    label: "Statistics",
+    label: "Logs",
     icon: <MdOutlineAnalytics />,
     to: "/Header",
     notification: 3,
