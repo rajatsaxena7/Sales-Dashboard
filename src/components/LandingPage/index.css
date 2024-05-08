@@ -75,3 +75,17 @@
 .buttonedit {
   border-radius: 20px;
 }
+
+.container {
+  display: flex;
+  align-items: center; /* Center items vertically */
+}
+
+/* Adjust spacing between items */
+.container > * {
+  margin-right: 20px; /* Adjust as needed */
+}
+
+.Picontainer {
+  border-radius: 20;
+}

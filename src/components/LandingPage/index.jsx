@@ -19,8 +19,12 @@ import {
   Typography,
   TextField,
   Box,
+  Grid,
 } from "@mui/material";
 import "./index.css";
+import { Pie } from "react-chartjs-2";
+import "chart.js/auto";
+import { Chart } from "react-chartjs-2";
 
 const Header1 = () => {
   const [rows, setRows] = useState([]);
@@ -28,6 +32,22 @@ const Header1 = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [attendanceDetails, setAttendanceDetails] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [averageAttendanceData, setAverageAttendanceData] = useState({});
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
+  const handleFileSelect = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file ? file.name : null);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +57,7 @@ const Header1 = () => {
         number: index + 1,
       }));
       setRows(formattedRows);
+      calculateAverageAttendance(usersData);
       setFilteredRows(formattedRows); // Initialize filteredRows the same as rows initially
     };
     fetchData();
@@ -54,6 +75,42 @@ const Header1 = () => {
       setFilteredRows(rows); // If search query is empty, show all rows
     }
   }, [searchQuery, rows]);
+
+  const calculateAverageAttendance = (users) => {
+    let totalOnField = 0;
+    let totalOffField = 0;
+    let count = 0;
+
+    users.forEach((user) => {
+      if (user.attendance) {
+        user.attendance.forEach((att) => {
+          if (att.onField) {
+            totalOnField++;
+          } else {
+            totalOffField++;
+          }
+          count++;
+        });
+      }
+    });
+
+    const averageOnField = count > 0 ? (totalOnField / count) * 100 : 0;
+    const averageOffField = count > 0 ? (totalOffField / count) * 100 : 0;
+
+    setAverageAttendanceData({
+      labels: ["On Field", "Off Field"],
+      datasets: [
+        {
+          label: "Average Attendance",
+          data: [averageOnField.toFixed(2), averageOffField.toFixed(2)],
+          backgroundColor: [
+            "rgba(75, 192, 192, 0.6)",
+            "rgba(255, 99, 132, 0.6)",
+          ],
+        },
+      ],
+    });
+  };
 
   const handleOpenDialog = (attendance) => {
     setAttendanceDetails(attendance);
@@ -87,18 +144,144 @@ const Header1 = () => {
           />
           <Button
             variant="contained"
+            onClick={handleOpenModal}
             sx={{
               backgroundColor: "#1976d2",
               borderStyle: "solid",
-              borderRadius: "10px",
               "&:hover": {
-                backgroundColor: "#98BFE6",
+                backgroundColor: "#7896B4",
               },
             }}
           >
             + New
           </Button>
+
+          <Dialog
+            open={modalOpen}
+            onClose={handleCloseModal}
+            fullWidth
+            maxWidth="sm"
+          >
+            <DialogTitle>Add New Item</DialogTitle>
+            <DialogContent>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Name"
+                    type="text"
+                    fullWidth
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    margin="dense"
+                    id="email"
+                    label="Email"
+                    type="email"
+                    fullWidth
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    margin="dense"
+                    id="phone"
+                    label="Phone"
+                    type="tel"
+                    fullWidth
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    margin="dense"
+                    id="department"
+                    label="Department"
+                    type="text"
+                    fullWidth
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    margin="dense"
+                    id="position"
+                    label="Position"
+                    type="text"
+                    fullWidth
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Button
+                    variant="contained"
+                    component="label"
+                    sx={{
+                      width: "100%", // Use full width of the grid column
+                      backgroundColor: "#1976d2",
+                      "&:hover": {
+                        backgroundColor: "#7896B4",
+                      },
+                    }}
+                  >
+                    Upload Image
+                    <input
+                      type="file"
+                      hidden
+                      accept="image/*"
+                      onChange={handleFileSelect}
+                    />
+                  </Button>
+                  {selectedFile && (
+                    <Typography variant="body2" sx={{ mt: 2 }}>
+                      File: {selectedFile}
+                    </Typography>
+                  )}
+                </Grid>
+              </Grid>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleCloseModal} color="primary">
+                Cancel
+              </Button>
+              <Button
+                onClick={handleCloseModal}
+                color="primary"
+                variant="contained"
+              >
+                Submit
+              </Button>
+            </DialogActions>
+          </Dialog>
         </Box>
+      </div>
+      <div
+        style={{
+          marginTop: "20px",
+          textAlign: "left",
+          width: "20vw",
+          border: "2px  #ccc",
+          padding: "10px",
+          borderRadius: "20px",
+          backgroundColor: "white",
+        }}
+      >
+        <Typography variant="h1">Average Attendance</Typography>
+        {averageAttendanceData.labels && (
+          <div style={{ height: "30vh" }} className="Picontainer">
+            <Pie
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+              }}
+              data={averageAttendanceData}
+            />
+          </div>
+        )}
       </div>
       <div className="tableContainer">
         <TableContainer component={Paper}>
@@ -230,7 +413,11 @@ const Header1 = () => {
           onClose={handleCloseDialog}
           aria-labelledby="dialog-title"
         >
-          <DialogTitle id="dialog-title">Attendance Details</DialogTitle>
+          <div>
+            <DialogTitle id="dialog-title">Details</DialogTitle>
+            <i className="fas fa-info-circle"></i>
+          </div>
+
           <DialogContent>
             <TableContainer component={Paper}>
               <Table>
