@@ -1,0 +1,19 @@
+/* maincontent.css */
+.Container {
+  display: flex;
+  justify-content: space-evenly; /* Ensures even spacing around each item */
+  align-items: center;
+}
+
+.Container > div {
+  flex: 1; /* Each card container will take equal width */
+  margin: 0 10px; /* Optional: Adds horizontal spacing between cards */
+}
+
+.Container > div:first-child {
+  margin-left: 0; /* Removes left margin from the first card */
+}
+
+.Container > div:last-child {
+  margin-right: 0; /* Removes right margin from the last card */
+}

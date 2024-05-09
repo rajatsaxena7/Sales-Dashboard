@@ -1,0 +1,72 @@
+.Container2 {
+  /* Container styling */
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  height: 30vh;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.GridContainer {
+  /* Grid container styling */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 10px; /* Gap between grid items */
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* Single column for smaller screens */
+  }
+}
+
+.GridItem {
+  /* Grid item styling */
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 13vh;
+  width: 12vw;
+  border-radius: 20px;
+  text-align: center;
+  background-color: cornflowerblue;
+
+  /* Responsive adjustments */
+  @media (max-width: 1450px) {
+    width: 80%; /* Adjust width for smaller screens */
+    /* Center-align items on smaller screens */
+  }
+}
+
+.ContainerContent {
+  /* Content inside grid item styling */
+  font-size: 14px;
+  font-weight: bold;
+  color: aliceblue;
+
+  @media (max-width: 1450px) {
+    font-size: 10px; /* Adjust width for smaller screens */
+    /* Center-align items on smaller screens */
+  }
+}
+
+.ContainerContent1 {
+  /* Content inside grid item styling */
+  font-size: 36px;
+  font-weight: bold;
+  padding-top: 10px;
+  color: aliceblue;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+
+  @media (max-width: 1450px) {
+    font-size: 14px; /* Adjust width for smaller screens */
+    /* Center-align items on smaller screens */
+  }
+}

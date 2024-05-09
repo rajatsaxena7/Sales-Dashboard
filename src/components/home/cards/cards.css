@@ -1,0 +1,20 @@
+.Container1 {
+  /* Adjust the color and width as needed */
+  border-radius: 8px; /* Optional: adds rounded corners */
+  padding: 20px; /* Optional: adds space inside the border */
+  margin: 20px; /* Optional: adds space outside the border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  height: 30vh;
+  width: 20vw; /* Optional: adds a shadow for depth */
+}
+
+.Title {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding-left: 10px;
+  justify-content: space-between;
+}
+
+.dropdown {
+  background-color: aliceblue;
+}

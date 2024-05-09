@@ -1,8 +1,15 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore, collection, getDocs } from "firebase/firestore"; // Import Firestore
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  setDoc,
+  doc,
+} from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import Firestore
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,6 +30,44 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const createUser = async (email, password, name, phone, file) => {
+  const auth = getAuth(); // Get Firebase Auth instance
+  const db = getFirestore(); // Initialize Firestore
+  const storage = getStorage(); // Initialize Firebase Storage
+
+  try {
+    // Create user authentication record
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    console.log("User created successfully:", userCredential.user);
+
+    // Reference to where the photo will be stored in Firebase Storage
+    const storageRef = ref(
+      storage,
+      `user-profiles/${userCredential.user.uid}/profile_picture`
+    );
+
+    // Upload the photo file to Firebase Storage
+    const snapshot = await uploadBytes(storageRef, file);
+    const photoUrl = await getDownloadURL(snapshot.ref);
+
+    // Create or update the user document in Firestore
+    await setDoc(doc(db, "users", userCredential.user.uid), {
+      display_name: name,
+      phone_number: phone,
+      email: email,
+      photo_url: photoUrl,
+    });
+
+    console.log("Firestore document and Storage upload successful");
+  } catch (error) {
+    console.error("Error creating user and uploading data:", error);
+    throw error; // Throw the error to be handled or logged in the calling function
+  }
+};
 const loadCollection = async (collectionName) => {
   try {
     const collRef = collection(db, collectionName);
@@ -56,4 +101,4 @@ const loadCollection = async (collectionName) => {
   }
 };
 
-export { app, auth, db, loadCollection, collection };
+export { app, auth, createUser, db, getDocs, loadCollection, collection };

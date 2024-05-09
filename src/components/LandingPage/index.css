@@ -9,9 +9,10 @@
 
 /* In your CSS file (e.g., header1.css) */
 .table-container {
-  max-height: 80vh;
+  max-height: 20%;
   overflow-y: auto; /* Enables vertical scrolling */
   width: 100%;
+  background-color: #646464;
   padding-top: 50%;
   margin: 10;
   border-radius: 20;
@@ -88,4 +89,22 @@
 
 .Picontainer {
   border-radius: 20;
+}
+
+.custom-scrollbar *::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar *::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scrollbar *::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+}
+
+.custom-scrollbar *::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
