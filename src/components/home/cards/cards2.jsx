@@ -27,6 +27,9 @@ ChartJS.register(
 
 function Cards2() {
   const [totalPortfolios, setTotalPortfolios] = useState(0);
+  const [totalFeatures, setTotalFeatures] = useState(0);
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [totalProposal, setTotalProposal] = useState(0);
 
   useEffect(() => {
     const fetchTotalData = async () => {
@@ -42,6 +45,16 @@ function Cards2() {
         const featuresSnapshot = await getDocs(featuresRef);
         const featuresCount = featuresSnapshot.size;
         setTotalFeatures(featuresCount);
+
+        const usersRef = collection(db, "users");
+        const usersSnapshot = await getDocs(usersRef);
+        const usersCount = usersSnapshot.size;
+        setTotalUsers(usersCount);
+
+        const proposalRef = collection(db, "proposal");
+        const proposalSnapshot = await getDocs(proposalRef);
+        const proposalCount = proposalSnapshot.size;
+        setTotalProposal(proposalCount);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -53,24 +66,27 @@ function Cards2() {
     <div className="Container2">
       <div className="GridContainer">
         {/* Container 1 */}
-        <div className="GridItem">
+        <div className="GridItemnew">
           <div className="ContainerContent">Total Portfolios</div>
           <div className="ContainerContent1">{totalPortfolios}</div>
         </div>
 
         {/* Container 2 */}
-        <div className="GridItem">
+        <div className="GridItemnew2">
           <div className="ContainerContent">Total features</div>
+          <div className="ContainerContent1">{totalFeatures}</div>
         </div>
 
         {/* Container 3 */}
-        <div className="GridItem">
+        <div className="GridItemnew3">
           <div className="ContainerContent">Total SalesPerson</div>
+          <div className="ContainerContent1">{totalUsers}</div>
         </div>
 
         {/* Container 4 */}
-        <div className="GridItem">
+        <div className="GridItemnew4">
           <div className="ContainerContent">Total proposals</div>
+          <div className="ContainerContent1">{totalProposal}</div>
         </div>
       </div>
     </div>

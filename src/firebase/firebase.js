@@ -8,6 +8,10 @@ import {
   getDocs,
   setDoc,
   doc,
+  orderBy,
+  query,
+  limit,
+  where,
 } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import Firestore
 
@@ -101,4 +105,16 @@ const loadCollection = async (collectionName) => {
   }
 };
 
-export { app, auth, createUser, db, getDocs, loadCollection, collection };
+export {
+  app,
+  auth,
+  where,
+  createUser,
+  db,
+  orderBy,
+  limit,
+  query,
+  getDocs,
+  loadCollection,
+  collection,
+};
