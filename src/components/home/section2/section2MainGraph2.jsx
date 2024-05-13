@@ -83,7 +83,6 @@ function Graph1() {
         fill: false,
       },
     ],
-    x,
   };
 
   return (
