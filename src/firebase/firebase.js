@@ -2,12 +2,15 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
+
 import {
   getFirestore,
   collection,
   getDocs,
   setDoc,
   doc,
+  addDoc,
+  deleteDoc,
   onSnapshot,
   Firestore,
   orderBy,
@@ -36,10 +39,12 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
+
 const createUser = async (email, password, name, phone, file) => {
   const auth = getAuth(); // Get Firebase Auth instance
   const db = getFirestore(); // Initialize Firestore
-  const storage = getStorage(); // Initialize Firebase Storage
+  // Initialize Firebase Storage
 
   try {
     // Create user authentication record
@@ -113,11 +118,15 @@ export {
   where,
   createUser,
   db,
+  doc,
   onSnapshot,
   orderBy,
   limit,
   Firestore,
+  addDoc,
+  deleteDoc,
   query,
+  storage,
   getDocs,
   loadCollection,
   collection,

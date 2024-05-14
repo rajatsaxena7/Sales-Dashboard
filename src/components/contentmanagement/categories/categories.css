@@ -1,0 +1,15 @@
+.Category-Container {
+  height: 90vh;
+  background-color: rgb(255, 255, 255);
+  width: 8vw;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  align-items: center;
+  text-align: center;
+  font-size: small;
+}
+.h5 {
+  font-size: 20;
+}

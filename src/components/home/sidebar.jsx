@@ -120,7 +120,7 @@ const linksArray = [
     notification: 0,
   },
   {
-    label: "Logs",
+    label: "Attendance Track",
     icon: <MdOutlineAnalytics />,
     to: "/Header",
     notification: 3,
@@ -128,7 +128,7 @@ const linksArray = [
   {
     label: "Customers",
     icon: <BsPeople />,
-    to: "/customers",
+    to: "/Content",
     notification: 0,
   },
   {

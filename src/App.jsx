@@ -8,6 +8,7 @@ import Home from "./components/home/index";
 import { AuthProvider } from "./contexts/authContexts";
 import { useRoutes } from "react-router-dom";
 import { ThemeProvider } from "./contexts/theme/themeContext.jsx";
+import Display_Data_section from "./components/contentmanagement/display_conteent/display_content_Section.jsx";
 
 function App() {
   const routesArray = [
@@ -30,6 +31,10 @@ function App() {
     {
       path: "/header",
       element: <Header1 />,
+    },
+    {
+      path: "/content",
+      element: <Display_Data_section />,
     },
   ];
   let routesElement = useRoutes(routesArray);
