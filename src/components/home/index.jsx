@@ -12,8 +12,6 @@ const Home = () => {
 
   return (
     <div className={`home ${isDarkTheme ? "dark" : "light"}`}>
-      {/* <AppBar title="Welcome to My App" /> */}
-      {/* <Header12 /> */}
       <Appbar12 />
 
       <div className="content"></div>

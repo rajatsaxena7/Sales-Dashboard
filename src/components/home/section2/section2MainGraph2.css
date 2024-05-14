@@ -1,7 +1,7 @@
 .GraphContainer {
   background-color: rgb(255, 255, 255);
   height: 50vh;
-  width: 58.5vw;
+  width: 50vw;
   padding-top: 20px;
   border-radius: 20px;
 }
@@ -18,4 +18,34 @@
 .header {
   display: flex;
   justify-content: space-between;
+}
+
+.row {
+  display: flex; /* Use flexbox to arrange children horizontally */
+  justify-content: space-around;
+  align-items: center; /* Align items vertically in the center */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .GraphContainer {
+    width: 90vw; /* Adjust width to fill more of the screen */
+    height: 30vh; /* Increase height for better visibility */
+    padding-top: 10px; /* Decrease top padding for smaller screens */
+    border-radius: 10px; /* Reduce border radius for a softer look */
+  }
+  .mainBox {
+    margin-top: 20px;
+  }
+
+  .GraphWrapper {
+    max-height: 300px; /* Decrease maximum height for smaller screens */
+  }
+
+  .row {
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    margin-top: 10px; /* Add spacing between stacked items */
+  }
 }

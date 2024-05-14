@@ -1,17 +1,18 @@
 .Welcome {
-  font-weight: 500;
-}
-
-.Welcome {
   display: flex;
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 60px;
-  border-radius: 10px;
   justify-content: space-between;
   align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  height: 60px;
+  border-radius: 10px;
   margin-bottom: 20px;
   background-color: rgb(255, 255, 255);
+}
+
+.Notification-icon {
+  margin-left: auto; /* Ensure it's applied correctly */
 }
 
 .h3 {
@@ -96,4 +97,23 @@
   background-color: #f8f9fa;
   color: #16181b;
   text-decoration: none;
+}
+
+.Notification-icon {
+  margin-left: auto; /* Ensure it's applied correctly */
+}
+
+.custom-menu {
+  border-radius: 12px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  min-width: 320px;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+}
+
+.view-all {
+  text-align: center;
 }

@@ -59,13 +59,13 @@ function Cards3() {
                     <Avatar
                       alt={performer.display_name}
                       src={performer.photo_url}
+                      className="Avatar"
                     />
                     <span className="DisplayName">
                       {performer.display_name}
                     </span>
                   </div>
                 </TableCell>
-
                 <TableCell>{performer.proposalsends}</TableCell>
               </TableRow>
             ))}

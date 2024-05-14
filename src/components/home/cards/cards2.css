@@ -1,11 +1,10 @@
 .Container2 {
   /* Container styling */
   border-radius: 8px;
-  padding: 20px;
-  margin: 20px;
+
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   /* background-color: white; */
-  height: 30vh;
+
   width: 20vw;
   display: flex;
   flex-direction: column;

@@ -1,0 +1,38 @@
+.MainTodoaction {
+  background-color: rgb(255, 255, 255);
+  height: 50vh;
+  width: 30vw;
+  padding-top: 20px;
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 40px;
+  font-family: "Your Custom Font", sans-serif;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+  .MainTodoaction {
+    width: 40vw; /* Decrease width for medium-sized screens */
+    padding-right: 30px;
+    padding-top: 20px; /* Adjust padding for medium-sized screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .MainTodoaction {
+    width: 50vw; /* Decrease width for smaller screens */
+    padding-right: 20px;
+    padding-top: 20px; /* Further adjust padding for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .MainTodoaction {
+    width: 70vw; /* Adjust width for mobile devices */
+    height: auto; /* Auto height to allow content to dictate height */
+    padding: 20px; /* Adjust overall padding for better spacing */
+    font-size: 14px; /* Decrease font size for better readability on mobile */
+    border-radius: 10px;
+    padding-top: 20px; /* Reduce border radius for a softer look on mobile */
+  }
+}

@@ -1,23 +1,22 @@
+/* cards3.css */
 .Container3 {
-  border-radius: 20px;
-  background-color: aquamarine;
-  height: 30vh;
-  width: 20vw;
-  margin: 20;
+  border-radius: 8px;
+  padding: 5%; /* Use percentage for responsive padding */
+  margin: 2%; /* Use percentage for responsive margin */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  width: 80%; /* Responsive width */
+  max-width: 400px;
+  height: 120px;
 }
-
-.Container3 :hover {
-  background-color: aqua;
-}
-
 .Title {
   font-size: 20px;
-  margin-bottom: 20px;
 }
 
 .TableContainer {
-  overflow-x: auto;
-  height: 25vh;
+  flex-grow: 1;
+  width: 100%;
+  overflow: auto;
 }
 
 .Table {
@@ -25,37 +24,11 @@
   border-collapse: collapse;
 }
 
-.TableHead {
-  background-color: #f5f5f5;
-}
-
-.TableHead,
 .TableBody {
   border-bottom: 1px solid #ddd;
 }
 
 .TableCell {
-  padding: 12px;
-  text-align: left;
-}
-
-.AvatarCell {
-  display: flex;
-  align-items: center;
-}
-
-@media (max-width: 768px) {
-  .TableCell {
-    font-size: 14px;
-  }
-}
-
-.Headertable1 {
-  height: 3vh;
-}
-
-.TableCell {
-  padding: 12px;
   text-align: left;
 }
 
@@ -64,6 +37,10 @@
   align-items: center;
 }
 
+.Avatar {
+  margin-right: 12px; /* Adjust spacing between Avatar and DisplayName */
+}
+
 .DisplayName {
-  margin-left: 12px;
+  font-weight: bold;
 }

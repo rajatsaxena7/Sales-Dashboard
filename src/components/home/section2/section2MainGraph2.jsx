@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./section2MainGraph2.css";
 import { Line } from "react-chartjs-2";
 import { collection, getDocs, query, db } from "../../../firebase/firebase.js";
+import TodoAction from "./taskssection/todoaction.jsx";
 
 function Graph1() {
   const [proposalData, setProposalData] = useState([]);
@@ -87,15 +88,20 @@ function Graph1() {
 
   return (
     <div className="mainBox">
-      <div className="GraphContainer">
-        <div className="header">
-          <h2>Daily Analysis</h2>
-          <div className="TotalAmount">
-            <h3>Total Amount: {totalAmount}</h3>
+      <div className="row">
+        <div className="GraphContainer">
+          <div className="header">
+            <h2>Daily Analysis</h2>
+            <div className="TotalAmount">
+              <h3>Total Amount: {totalAmount}</h3>
+            </div>
+          </div>
+          <div className="GraphWrapper">
+            <Line data={graphData} />
           </div>
         </div>
-        <div className="GraphWrapper">
-          <Line data={graphData} />
+        <div className="TodoAction">
+          <TodoAction />
         </div>
       </div>
     </div>

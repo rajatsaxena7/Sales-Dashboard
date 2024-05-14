@@ -11,7 +11,6 @@ function Maincontent() {
       <div className="Container">
         <Cards1 />
         <Cards3 />
-
         <Cards2 />
       </div>
       <Graph1 />

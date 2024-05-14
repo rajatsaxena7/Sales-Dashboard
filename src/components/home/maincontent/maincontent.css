@@ -1,19 +1,40 @@
 /* maincontent.css */
+
 .Container {
   display: flex;
-  justify-content: space-evenly; /* Ensures even spacing around each item */
   align-items: center;
 }
 
 .Container > div {
-  flex: 1; /* Each card container will take equal width */
-  margin: 0 10px; /* Optional: Adds horizontal spacing between cards */
+  flex: 1;
+  margin: 0 10px;
 }
 
 .Container > div:first-child {
-  margin-left: 0; /* Removes left margin from the first card */
+  margin-left: 10px;
 }
 
 .Container > div:last-child {
-  margin-right: 0; /* Removes right margin from the last card */
+  margin-right: 10vw;
+}
+
+/* Media query for smaller screen sizes */
+@media (max-width: 768px) {
+  .Container {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: stretch; /* Stretch items to full width */
+  }
+
+  .Container > div {
+    margin: 10px 0; /* Add vertical spacing between cards */
+  }
+
+  .Container > div:first-child {
+    margin-top: 10px; /* Adjust top margin for the first card */
+  }
+
+  .Container > div:last-child {
+    margin-bottom: 10px; /* Adjust bottom margin for the last card */
+    margin-right: 0; /* Reset right margin for the last card */
+  }
 }
