@@ -1,0 +1,6 @@
+.categories123-container {
+  display: flex;
+  /* Adjust this as needed */
+  align-items: flex-start; /* Align items to the start of the container */
+  gap: 16px; /* Add some space between the two components */
+}

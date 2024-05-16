@@ -1,0 +1,47 @@
+.Category-Container2 {
+  height: 90vh;
+  background-color: rgb(255, 255, 255);
+  width: 80vw;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-left: 15px;
+  font-size: small;
+  padding: 20px;
+}
+.h5 {
+  font-size: 20;
+}
+
+.Category-Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.manage-button {
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.manage-button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5);
+}
+
+.modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  outline: none;
+}

@@ -13,7 +13,7 @@ import {
 import { Button, Modal, TextField, IconButton } from "@mui/material";
 import { useDropzone } from "react-dropzone";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import CloseIcon from "@mui/icons-material/Close";
+import CloseIcon from "@mui/icons-material/Close"; // Import Close icon
 import "./categorylabel.css";
 import {
   ref,
@@ -131,11 +131,25 @@ function CategoryLabel() {
     <div className="Category-Styling">
       <ToastContainer />
       {categories.map((category) => (
-        <div key={category.id} className="Category-Item">
+        <div
+          key={category.id}
+          style={{
+            position: "relative",
+            marginBottom: "20px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <img
             src={category.posterimage}
             alt={category.name}
-            className="Category-Image"
+            style={{
+              width: "70px",
+              height: "70px",
+              borderRadius: "70%",
+              marginBottom: "10px",
+            }}
           />
           <span>{category.name}</span>
           <IconButton
@@ -156,32 +170,50 @@ function CategoryLabel() {
           </IconButton>
         </div>
       ))}
-      <Button
+      <button
         variant="contained"
         onClick={handleAddCategory}
         style={{ marginTop: "20px" }}
       >
         Add more
-      </Button>
+      </button>
       <Modal open={openModal} onClose={handleCloseModal}>
-        <div className="Modal-Content">
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            backgroundColor: "white",
+            padding: "20px",
+            borderRadius: "8px",
+            outline: "none",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <h5>Add New Category</h5>
           <TextField
             label="Category Name"
             variant="outlined"
-            className="Modal-Input"
+            borderRadius="15"
             value={newCategoryName}
             onChange={(e) => setNewCategoryName(e.target.value)}
           />
+
           <TextField
             label="Number of Projects"
             variant="outlined"
             type="number"
-            className="Modal-Input"
             value={numProjects}
             onChange={(e) => setNumProjects(e.target.value)}
+            style={{ marginBottom: "20px", marginTop: "20px" }}
           />
-          <div {...getRootProps()} className="Upload-Container">
+          <div
+            {...getRootProps()}
+            style={{ marginBottom: "20px", cursor: "pointer" }}
+          >
             <input {...getInputProps()} />
             {categoryImage ? (
               <img
@@ -193,13 +225,13 @@ function CategoryLabel() {
               <CloudUploadIcon style={{ fontSize: 20 }} />
             )}
           </div>
-          <Button
+          <button
             variant="contained"
             style={{ width: "100%" }}
             onClick={handleSaveCategory}
           >
             Save
-          </Button>
+          </button>
         </div>
       </Modal>
     </div>
